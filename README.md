@@ -6,3 +6,5 @@ From root folder ->
 $ chmod +x script.sh
 $ ./script.sh
 ```
+
+Hello World
