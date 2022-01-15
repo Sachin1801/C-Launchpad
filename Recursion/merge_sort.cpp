@@ -8,7 +8,7 @@ void merge(int *a, int s, int e)
     int j = mid + 1;
     int k = s;
 
-    int temp[100];
+    int temp[s + 1];
     while (i <= mid && j <= e)
     {
         if (a[i] < a[j])
@@ -55,9 +55,9 @@ void mergesort(int a[], int s, int e)
 
 int main()
 {
-    int a[100];
-    int n;
+    long int n;
     cin >> n;
+    long int a[n];
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
@@ -65,7 +65,7 @@ int main()
     mergesort(a, 0, n - 1);
     for (int i = 0; i < n; i++)
     {
-        cout << a[i] << ",";
+        cout << a[i] << " ";
     }
     return 0;
 }

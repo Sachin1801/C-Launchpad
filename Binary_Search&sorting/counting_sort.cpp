@@ -1,37 +1,50 @@
+// Counting sort which takes negative numbers as well
+#include <algorithm>
 #include <iostream>
+#include <vector>
 using namespace std;
 
-void countingsort(int a[])
+void countSort(vector<int> &arr)
 {
-    int min = min(a, a + n);
-    int max = max(a, a + n);
-    int range = (max - min) + 1;
-    int count[10000] = {0};
-    int countt = 0;
-    for (int i = 0; i < n; i++)
+    int max = *max_element(arr.begin(), arr.end());
+    int min = *min_element(arr.begin(), arr.end());
+    int range = max - min + 1;
+
+    vector<int> count(range), output(arr.size());
+    for (int i = 0; i < arr.size(); i++)
+        count[arr[i] - min]++;
+
+    for (int i = 1; i < count.size(); i++)
+        count[i] += count[i - 1];
+
+    for (int i = arr.size() - 1; i >= 0; i--)
     {
-        int temp = a[i];
-        count[temp] = count[temp] + 1;
+        output[count[arr[i] - min] - 1] = arr[i];
+        count[arr[i] - min]--;
     }
-    //modifying the count array
-    for (int i = 0; i < range; i++)
-    {
-        count[i] += count[i + 1];
-    }
-    int arr[range];
-    for (int i = 0; i < n; i++)
-    {
-    }
+
+    for (int i = 0; i < arr.size(); i++)
+        arr[i] = output[i];
+}
+
+void printArray(vector<int> &arr)
+{
+    for (int i = 0; i < arr.size(); i++)
+        cout << arr[i] << " ";
 }
 
 int main()
 {
     int n;
-    int a[n];
+    cin >> n;
+    vector<int> arr;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        int no;
+        cin >> no;
+        arr.push_back(no);
     }
-    countingsort(a);
+    countSort(arr);
+    printArray(arr);
     return 0;
 }

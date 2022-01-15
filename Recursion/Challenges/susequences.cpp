@@ -13,9 +13,9 @@ int subsequences(string str, char out[], int i, int j)
     //recursive case
     //including the next character
     int ans = 0;
-    //excluding the next character
     ans += subsequences(str, out, i + 1, j);
     out[j] = str[i];
+    //excluding the next character
     ans += subsequences(str, out, i + 1, j + 1);
     return ans;
 }

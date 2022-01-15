@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 int stringtoint(char *a, int n)
@@ -8,7 +9,7 @@ int stringtoint(char *a, int n)
     {
         return 0;
     }
-    // last digit
+    // last digitā
     int digit = a[n - 1] - '0'; // end mai -'0' isliye kiya kyuki vo uski ascii value ko kat kar integer de deta hai
 
     int small_ans = stringtoint(a, n - 1);
@@ -19,14 +20,12 @@ int stringtoint(char *a, int n)
 int main()
 {
     //given a stirng convert it into integer respectively
-    char a[] = "1234";
+    char a[100];
+    cin >> a;
     int len = strlen(a);
 
     cout << stringtoint(a, len) << endl;
-    //to show you that the string is converted into integer form
-    int x = stringtoint(a, len);
-    cout << x << endl;
-    cout << x + 1 << endl;
+    cout << endl;
 
     return 0;
 }

@@ -16,8 +16,6 @@ void generate_subsequences(char *in, char *out, int i, int j, int ans)
     generate_subsequences(in, out, i + 1, j + 1, ans + 1);
     //excluding the next character
     generate_subsequences(in, out, i + 1, j, ans + 1);
-    cout << endl;
-    cout << ans;
 }
 
 int main()
